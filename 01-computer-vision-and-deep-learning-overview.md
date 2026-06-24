@@ -10,10 +10,9 @@
 
 一张 RGB 彩色图像在计算机中，本质上是一个三维数组：
 
-$$
+```math
 \mathbf{I}\in\mathbb{R}^{H\times W\times 3}
-$$
-
+```
 其中：
 
 - $H$ 表示图像高度；
@@ -82,28 +81,26 @@ $$
 
 最早的感知机可以看作一个简单的线性分类器：
 
-$$
+```math
 f(\mathbf{x})
 =
-\operatorname{sign}
+\mathrm{sign}
 \left(
 \mathbf{w}^{T}\mathbf{x}+b
 \right)
-$$
-
+```
 其中：
 
 - $\mathbf{x}$ 是输入特征；
 - $\mathbf{w}$ 是模型权重；
 - $b$ 是偏置项；
-- $\operatorname{sign}(\cdot)$ 是符号函数。
+- $\mathrm{sign}(\cdot)$ 是符号函数。
 
 感知机首先计算输入特征的加权和：
 
-$$
+```math
 z=\mathbf{w}^{T}\mathbf{x}+b
-$$
-
+```
 然后根据 $z$ 的正负判断样本属于哪个类别。
 
 单层感知机只能处理线性可分问题，无法解决 XOR 这样的非线性分类问题。
@@ -114,12 +111,11 @@ $$
 
 对于网络参数 $W$，梯度下降的基本更新方式为：
 
-$$
+```math
 W
 \leftarrow
 W-\eta\frac{\partial L}{\partial W}
-$$
-
+```
 其中：
 
 - $L$ 是损失函数；
@@ -158,15 +154,7 @@ $$
 
 也可以表示为：
 
-$$
-\text{深度学习的发展}
-=
-\text{数据}
-+
-\text{算法}
-+
-\text{计算能力}
-$$
+> **深度学习的发展 = 数据 + 算法 + 计算能力**
 
 ### 4.1 数据
 
@@ -332,15 +320,14 @@ Transformer 通过注意力机制建模不同位置之间的关系。
 
 缩放点积注意力可以表示为：
 
-$$
-\operatorname{Attention}(Q,K,V)
+```math
+\mathrm{Attention}(Q,K,V)
 =
-\operatorname{softmax}
+\mathrm{softmax}
 \left(
 \frac{QK^{T}}{\sqrt{d_k}}
 \right)V
-$$
-
+```
 其中：
 
 - $Q$ 表示查询矩阵；
@@ -451,7 +438,7 @@ VLM 主要处理视觉和语言信息，VLA 则需要进一步根据视觉和语
 
 正向加噪过程可以表示为：
 
-$$
+```math
 q(\mathbf{x}_t\mid\mathbf{x}_{t-1})
 =
 \mathcal{N}
@@ -460,8 +447,7 @@ q(\mathbf{x}_t\mid\mathbf{x}_{t-1})
 \sqrt{1-\beta_t}\mathbf{x}_{t-1},
 \beta_t\mathbf{I}
 \right)
-$$
-
+```
 其中：
 
 - $\mathbf{x}_{t-1}$ 是上一个时刻的图像；
@@ -471,7 +457,7 @@ $$
 
 反向去噪过程可以表示为：
 
-$$
+```math
 p_{\theta}(\mathbf{x}_{t-1}\mid\mathbf{x}_t)
 =
 \mathcal{N}
@@ -480,8 +466,7 @@ p_{\theta}(\mathbf{x}_{t-1}\mid\mathbf{x}_t)
 \boldsymbol{\mu}_{\theta}(\mathbf{x}_t,t),
 \boldsymbol{\Sigma}_{\theta}(\mathbf{x}_t,t)
 \right)
-$$
-
+```
 模型通过学习反向过程，将噪声图像逐渐恢复为清晰图像。
 
 ### 9.4 视觉语言模型
@@ -602,21 +587,9 @@ VLA 则需要进一步：
 
 可以用两个公式概括这一节课：
 
-$$
-\text{深度学习的发展}
-=
-\text{数据}
-+
-\text{算法}
-+
-\text{计算能力}
-$$
+> **深度学习的发展 = 数据 + 算法 + 计算能力**
 
-$$
-\text{计算机视觉}
-=
-\text{从像素中提取信息并理解世界}
-$$
+> **计算机视觉 = 从像素中提取信息并理解世界**
 
 ## 参考资料
 
