@@ -147,7 +147,7 @@ $$
 ### 1. ReLU
 
 $$
-\operatorname{ReLU}(x)=\max(0,x)
+\mathrm{ReLU}(x)=\max(0,x)
 $$
 
 例如：
@@ -165,7 +165,7 @@ $$
 经过 ReLU：
 
 $$
-\operatorname{ReLU}(x)=
+\mathrm{ReLU}(x)=
 \begin{bmatrix}
 2\\
 0\\
@@ -177,7 +177,7 @@ $$
 ReLU 的导数为：
 
 $$
-\operatorname{ReLU}'(x)=
+\mathrm{ReLU}'(x)=
 \begin{cases}
 1,&x>0\\
 0,&x<0
@@ -854,7 +854,7 @@ $$
 ReLU：
 
 $$
-\operatorname{ReLU}(x)=\max(0,x)
+\mathrm{ReLU}(x)=\max(0,x)
 $$
 
 本质上就是一个 Max 节点。
@@ -1225,7 +1225,7 @@ Z_1=XW_1
 $$
 
 $$
-H=\operatorname{ReLU}(Z_1)
+H=\mathrm{ReLU}(Z_1)
 $$
 
 $$
@@ -1294,7 +1294,7 @@ grad_h = grad_y_pred.dot(w2.T)
 ### 第四步：经过 ReLU 节点
 
 $$
-H=\operatorname{ReLU}(Z_1)
+H=\mathrm{ReLU}(Z_1)
 $$
 
 所以：
@@ -1757,8 +1757,7 @@ $$
 CS231n-2025-Notes/
 ├── 03-regularization-optimization-gradient-descent.md
 ├── 04-neural-networks-and-backpropagation.md
-└── images/
-    └── 04-neural-networks-and-backpropagation-cover.png
+└── README.md
 ```
 
-> 图片使用相对路径引用，因此克隆仓库或在线浏览时都可以正常显示。
+> 本笔记不依赖外部图片，单独上传 Markdown 文件即可正常阅读。
