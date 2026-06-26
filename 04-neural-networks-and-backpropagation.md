@@ -51,7 +51,7 @@
 
 神经网络的训练流程是：
 
-$$
+```math
 \boxed{
 \text{前向传播}
 \rightarrow
@@ -61,7 +61,7 @@ $$
 \rightarrow
 \text{更新参数}
 }
-$$
+```
 
 <a id="section-01"></a>
 
@@ -69,29 +69,29 @@ $$
 
 线性分类器的得分函数为：
 
-$$
+```math
 S=XW+b
-$$
+```
 
 它只能得到线性分类边界，难以处理复杂的非线性数据。
 
 两层神经网络可以写成：
 
-$$
+```math
 H=f(XW_1+b_1)
-$$
+```
 
-$$
+```math
 S=HW_2+b_2
-$$
+```
 
 合并后：
 
-$$
+```math
 \boxed{
 S=f(XW_1+b_1)W_2+b_2
 }
-$$
+```
 
 其中：
 
@@ -110,35 +110,35 @@ $$
 
 假设两层之间没有激活函数：
 
-$$
+```math
 H=XW_1
-$$
+```
 
-$$
+```math
 S=HW_2=XW_1W_2
-$$
+```
 
 令：
 
-$$
+```math
 W'=W_1W_2
-$$
+```
 
 则：
 
-$$
+```math
 S=XW'
-$$
+```
 
 它仍然只是一个线性模型。
 
 因此，无论叠加多少个线性层，只要没有非线性激活函数，最终都可以合并成一个线性层。
 
-$$
+```math
 \boxed{
 \text{激活函数负责为神经网络引入非线性}
 }
-$$
+```
 
 <a id="section-03"></a>
 
@@ -146,13 +146,13 @@ $$
 
 ### 1. ReLU
 
-$$
+```math
 \mathrm{ReLU}(x)=\max(0,x)
-$$
+```
 
 例如：
 
-$$
+```math
 x=
 \begin{bmatrix}
 2\\
@@ -160,11 +160,11 @@ x=
 3\\
 -4
 \end{bmatrix}
-$$
+```
 
 经过 ReLU：
 
-$$
+```math
 \mathrm{ReLU}(x)=
 \begin{bmatrix}
 2\\
@@ -172,17 +172,17 @@ $$
 3\\
 0
 \end{bmatrix}
-$$
+```
 
 ReLU 的导数为：
 
-$$
+```math
 \mathrm{ReLU}'(x)=
 \begin{cases}
 1,&x>0\\
 0,&x<0
 \end{cases}
-$$
+```
 
 反向传播时：
 
@@ -191,44 +191,44 @@ $$
 
 记忆：
 
-$$
+```math
 \boxed{
 \text{ReLU 前向保留正数，反向保留正数位置的梯度}
 }
-$$
+```
 
 ### 2. Sigmoid
 
-$$
+```math
 \sigma(x)=\frac{1}{1+e^{-x}}
-$$
+```
 
 输出范围为：
 
-$$
+```math
 0<\sigma(x)<1
-$$
+```
 
 导数为：
 
-$$
+```math
 \sigma'(x)=\sigma(x)(1-\sigma(x))
-$$
+```
 
 如果前向传播已经得到：
 
-$$
+```math
 \sigma(x)=0.73
-$$
+```
 
 那么：
 
-$$
+```math
 \sigma'(x)
 =
 0.73(1-0.73)
 \approx0.20
-$$
+```
 
 当输入的绝对值很大时，Sigmoid 的导数接近 0，容易出现梯度消失。
 
@@ -255,9 +255,9 @@ N, D_in, H, D_out = 64, 1000, 100, 10
 
 输入数据为：
 
-$$
+```math
 X\in\mathbb{R}^{64\times1000}
-$$
+```
 
 表示：
 
@@ -272,11 +272,11 @@ D_in = 1000
 
 不是说输入只有数字 1000，而是：
 
-$$
+```math
 \boxed{
 \text{每个样本由1000个数表示}
 }
-$$
+```
 
 <a id="section-05"></a>
 
@@ -286,37 +286,37 @@ $$
 
 例如，一张灰度图像大小为：
 
-$$
+```math
 28\times28
-$$
+```
 
 展开成一维向量后：
 
-$$
+```math
 D_{\text{in}}=28\times28=784
-$$
+```
 
 一张 CIFAR-10 彩色图像大小为：
 
-$$
+```math
 32\times32\times3
-$$
+```
 
 展开后：
 
-$$
+```math
 D_{\text{in}}=32\times32\times3=3072
-$$
+```
 
 因此：
 
-$$
+```math
 \boxed{
 D_{\text{in}}
 =
 \text{一个样本展开后包含的数值总数}
 }
-$$
+```
 
 <a id="section-06"></a>
 
@@ -326,15 +326,15 @@ $$
 
 例如：
 
-$$
+```math
 1000\rightarrow100\rightarrow10
-$$
+```
 
 也可以设计成：
 
-$$
+```math
 1000\rightarrow200\rightarrow50\rightarrow10
-$$
+```
 
 隐藏层神经元数量属于超参数，由设计者选择。
 
@@ -347,30 +347,30 @@ $$
 
 例如：
 
-$$
+```math
 X\in\mathbb{R}^{64\times1000}
-$$
+```
 
 第一隐藏层有 100 个神经元，则：
 
-$$
+```math
 W_1\in\mathbb{R}^{1000\times100}
-$$
+```
 
 矩阵乘法为：
 
-$$
+```math
 XW_1:
 (64\times1000)(1000\times100)
 =
 64\times100
-$$
+```
 
 所以隐藏层输出为：
 
-$$
+```math
 H\in\mathbb{R}^{64\times100}
-$$
+```
 
 <a id="section-07"></a>
 
@@ -378,21 +378,21 @@ $$
 
 两个同维向量的内积为：
 
-$$
+```math
 a^Tb=\sum_{i=1}^{n}a_ib_i
-$$
+```
 
 也就是：
 
-$$
+```math
 \boxed{
 \text{对应元素相乘，再把结果全部相加}
 }
-$$
+```
 
 例如：
 
-$$
+```math
 a=
 \begin{bmatrix}
 1\\
@@ -406,26 +406,26 @@ b=
 5\\
 6
 \end{bmatrix}
-$$
+```
 
 则：
 
-$$
+```math
 a^Tb
 =
 1\times4+2\times5+3\times6
 =32
-$$
+```
 
 一个神经元的基本计算为：
 
-$$
+```math
 z=w^Tx+b
-$$
+```
 
 例如：
 
-$$
+```math
 w=
 \begin{bmatrix}
 0.5\\
@@ -441,26 +441,26 @@ x=
 \end{bmatrix},
 \qquad
 b=1
-$$
+```
 
 先计算内积：
 
-$$
+```math
 w^Tx
 =
 0.5\times2+(-1)\times3+2\times4
 =6
-$$
+```
 
 再加上偏置：
 
-$$
+```math
 z=6+1=7
-$$
+```
 
 因此一个神经元完成的过程是：
 
-$$
+```math
 \boxed{
 \text{输入加权求和}
 \rightarrow
@@ -468,7 +468,7 @@ $$
 \rightarrow
 \text{经过激活函数}
 }
-$$
+```
 
 <a id="section-08"></a>
 
@@ -476,31 +476,31 @@ $$
 
 设：
 
-$$
+```math
 X\in\mathbb{R}^{N\times D_{\text{in}}}
-$$
+```
 
-$$
+```math
 W_1\in\mathbb{R}^{D_{\text{in}}\times H}
-$$
+```
 
-$$
+```math
 W_2\in\mathbb{R}^{H\times D_{\text{out}}}
-$$
+```
 
 前向传播为：
 
-$$
+```math
 Z_1=XW_1+b_1
-$$
+```
 
-$$
+```math
 H=f(Z_1)
-$$
+```
 
-$$
+```math
 Y_{\text{pred}}=HW_2+b_2
-$$
+```
 
 对应代码：
 
@@ -512,23 +512,23 @@ y_pred = h.dot(w2) + b2
 
 维度变化为：
 
-$$
+```math
 N\times D_{\text{in}}
 \rightarrow
 N\times H
 \rightarrow
 N\times D_{\text{out}}
-$$
+```
 
 例如：
 
-$$
+```math
 64\times1000
 \rightarrow
 64\times100
 \rightarrow
 64\times10
-$$
+```
 
 <a id="section-09"></a>
 
@@ -538,39 +538,39 @@ $$
 
 例如：
 
-$$
+```math
 f(x,y,z)=(x+y)z
-$$
+```
 
 可以拆成：
 
-$$
+```math
 q=x+y
-$$
+```
 
-$$
+```math
 f=qz
-$$
+```
 
 前向传播从左向右计算数值：
 
-$$
+```math
 x,y,z
 \rightarrow
 q
 \rightarrow
 f
-$$
+```
 
 反向传播从右向左计算梯度：
 
-$$
+```math
 f
 \rightarrow
 q,z
 \rightarrow
 x,y
-$$
+```
 
 计算图的优点是：
 
@@ -582,24 +582,24 @@ $$
 
 假设：
 
-$$
+```math
 x\rightarrow y\rightarrow L
-$$
+```
 
 其中：
 
-$$
+```math
 y=f(x)
-$$
+```
 
 根据链式法则：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 \frac{\partial L}{\partial y}
 \frac{\partial y}{\partial x}
-$$
+```
 
 其中：
 
@@ -609,7 +609,7 @@ $$
 
 因此可以记为：
 
-$$
+```math
 \boxed{
 \text{传回梯度}
 =
@@ -617,46 +617,46 @@ $$
 \times
 \text{局部梯度}
 }
-$$
+```
 
 ### 例子
 
 设：
 
-$$
+```math
 y=x^2
-$$
+```
 
-$$
+```math
 L=3y
-$$
+```
 
 当：
 
-$$
+```math
 x=2
-$$
+```
 
 局部梯度为：
 
-$$
+```math
 \frac{\partial y}{\partial x}=2x=4
-$$
+```
 
 上游梯度为：
 
-$$
+```math
 \frac{\partial L}{\partial y}=3
-$$
+```
 
 因此：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 3\times4
 =12
-$$
+```
 
 <a id="section-11"></a>
 
@@ -666,111 +666,111 @@ $$
 
 前向传播：
 
-$$
+```math
 z=x+y
-$$
+```
 
 局部梯度：
 
-$$
+```math
 \frac{\partial z}{\partial x}=1
-$$
+```
 
-$$
+```math
 \frac{\partial z}{\partial y}=1
-$$
+```
 
 如果上游梯度为 $g$，那么：
 
-$$
+```math
 \frac{\partial L}{\partial x}=g
-$$
+```
 
-$$
+```math
 \frac{\partial L}{\partial y}=g
-$$
+```
 
 记忆：
 
-$$
+```math
 \boxed{
 \text{加法节点：上游梯度原样传给每个输入}
 }
-$$
+```
 
 ### 2. 乘法节点：乘上另一个输入
 
 前向传播：
 
-$$
+```math
 z=xy
-$$
+```
 
 局部梯度：
 
-$$
+```math
 \frac{\partial z}{\partial x}=y
-$$
+```
 
-$$
+```math
 \frac{\partial z}{\partial y}=x
-$$
+```
 
 如果上游梯度为 $g$，则：
 
-$$
+```math
 \frac{\partial L}{\partial x}=gy
-$$
+```
 
-$$
+```math
 \frac{\partial L}{\partial y}=gx
-$$
+```
 
 例如：
 
-$$
+```math
 x=2,\qquad y=3,\qquad g=5
-$$
+```
 
 则：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 5\times3
 =15
-$$
+```
 
-$$
+```math
 \frac{\partial L}{\partial y}
 =
 5\times2
 =10
-$$
+```
 
 记忆：
 
-$$
+```math
 \boxed{
 \text{乘法节点：乘上另一个输入}
 }
-$$
+```
 
 ### 3. 复制节点：梯度相加
 
 如果同一个变量 $x$ 在前向传播中进入两条路径：
 
-$$
+```math
 x\rightarrow y_1
-$$
+```
 
-$$
+```math
 x\rightarrow y_2
-$$
+```
 
 那么反向传播到 $x$ 时，需要把两条路径传回来的梯度相加：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 \left(
@@ -780,30 +780,30 @@ $$
 \left(
 \frac{\partial L}{\partial x}
 \right)_{\text{路径2}}
-$$
+```
 
 例如两条路径分别传回：
 
-$$
+```math
 4,\qquad2
-$$
+```
 
 则：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 4+2
 =6
-$$
+```
 
 记忆：
 
-$$
+```math
 \boxed{
 \text{前向复制，反向相加}
 }
-$$
+```
 
 注意：
 
@@ -813,49 +813,49 @@ $$
 
 前向传播：
 
-$$
+```math
 z=\max(x,y)
-$$
+```
 
 假设：
 
-$$
+```math
 x=4,\qquad y=5
-$$
+```
 
 由于最大值来自 $y$，所以：
 
-$$
+```math
 \frac{\partial z}{\partial x}=0
-$$
+```
 
-$$
+```math
 \frac{\partial z}{\partial y}=1
-$$
+```
 
 如果上游梯度为 $g$，则：
 
-$$
+```math
 \frac{\partial L}{\partial x}=0
-$$
+```
 
-$$
+```math
 \frac{\partial L}{\partial y}=g
-$$
+```
 
 记忆：
 
-$$
+```math
 \boxed{
 \text{Max 节点：梯度传给前向传播中的获胜者}
 }
-$$
+```
 
 ReLU：
 
-$$
+```math
 \mathrm{ReLU}(x)=\max(0,x)
-$$
+```
 
 本质上就是一个 Max 节点。
 
@@ -863,38 +863,38 @@ $$
 
 对于：
 
-$$
+```math
 f(x)=\frac{1}{x}
-$$
+```
 
 导数为：
 
-$$
+```math
 \frac{df}{dx}
 =
 -\frac{1}{x^2}
-$$
+```
 
 当：
 
-$$
+```math
 x=1.37
-$$
+```
 
 局部梯度为：
 
-$$
+```math
 -\frac{1}{1.37^2}
 \approx-0.53
-$$
+```
 
 如果上游梯度为 1，则传回的梯度为：
 
-$$
+```math
 1\times(-0.53)
 =
 -0.53
-$$
+```
 
 负号表示：
 
@@ -906,31 +906,31 @@ $$
 
 如果输入和输出都是向量：
 
-$$
+```math
 x\in\mathbb{R}^n
-$$
+```
 
-$$
+```math
 y=f(x)\in\mathbb{R}^m
-$$
+```
 
 那么 $y$ 对 $x$ 的导数称为雅可比矩阵：
 
-$$
+```math
 J=\frac{\partial y}{\partial x}
-$$
+```
 
 其中：
 
-$$
+```math
 J_{ij}
 =
 \frac{\partial y_i}{\partial x_j}
-$$
+```
 
 展开为：
 
-$$
+```math
 J=
 \begin{bmatrix}
 \frac{\partial y_1}{\partial x_1}
@@ -951,17 +951,17 @@ J=
 &
 \frac{\partial y_m}{\partial x_n}
 \end{bmatrix}
-$$
+```
 
 雅可比矩阵的维度为：
 
-$$
+```math
 \boxed{
 m\times n
 =
 \text{输出维度}\times\text{输入维度}
 }
-$$
+```
 
 它记录：
 
@@ -973,47 +973,47 @@ $$
 
 设：
 
-$$
+```math
 y_1=x_1^2+x_2
-$$
+```
 
-$$
+```math
 y_2=x_1x_2
-$$
+```
 
 分别求偏导：
 
-$$
+```math
 \frac{\partial y_1}{\partial x_1}=2x_1
-$$
+```
 
-$$
+```math
 \frac{\partial y_1}{\partial x_2}=1
-$$
+```
 
-$$
+```math
 \frac{\partial y_2}{\partial x_1}=x_2
-$$
+```
 
-$$
+```math
 \frac{\partial y_2}{\partial x_2}=x_1
-$$
+```
 
 所以：
 
-$$
+```math
 J=
 \begin{bmatrix}
 2x_1&1\\
 x_2&x_1
 \end{bmatrix}
-$$
+```
 
 当输入发生小变化 $\Delta x$ 时：
 
-$$
+```math
 \Delta y\approx J\Delta x
-$$
+```
 
 因此，雅可比矩阵可以理解为函数在当前点附近的局部线性变换。
 
@@ -1023,29 +1023,29 @@ $$
 
 对于：
 
-$$
+```math
 y=Wx+b
-$$
+```
 
 展开第 $i$ 个输出：
 
-$$
+```math
 y_i=\sum_jW_{ij}x_j+b_i
-$$
+```
 
 因此：
 
-$$
+```math
 \frac{\partial y_i}{\partial x_j}=W_{ij}
-$$
+```
 
 所以：
 
-$$
+```math
 \boxed{
 \frac{\partial y}{\partial x}=W
 }
-$$
+```
 
 线性层对输入的雅可比矩阵就是权重矩阵本身。
 
@@ -1055,7 +1055,7 @@ $$
 
 设：
 
-$$
+```math
 x=
 \begin{bmatrix}
 1\\
@@ -1063,11 +1063,11 @@ x=
 3\\
 -1
 \end{bmatrix}
-$$
+```
 
 经过 ReLU：
 
-$$
+```math
 z=
 \begin{bmatrix}
 1\\
@@ -1075,11 +1075,11 @@ z=
 3\\
 0
 \end{bmatrix}
-$$
+```
 
 ReLU 的雅可比矩阵为：
 
-$$
+```math
 \frac{\partial z}{\partial x}
 =
 \begin{bmatrix}
@@ -1088,11 +1088,11 @@ $$
 0&0&1&0\\
 0&0&0&0
 \end{bmatrix}
-$$
+```
 
 假设上游梯度为：
 
-$$
+```math
 \frac{\partial L}{\partial z}
 =
 \begin{bmatrix}
@@ -1101,11 +1101,11 @@ $$
 5\\
 9
 \end{bmatrix}
-$$
+```
 
 则：
 
-$$
+```math
 \frac{\partial L}{\partial x}
 =
 \begin{bmatrix}
@@ -1114,7 +1114,7 @@ $$
 5\\
 0
 \end{bmatrix}
-$$
+```
 
 实际程序中不需要构造完整雅可比矩阵，可以直接写成：
 
@@ -1130,89 +1130,89 @@ dx = dout * (x > 0)
 
 设：
 
-$$
+```math
 Y=XW
-$$
+```
 
 其中：
 
-$$
+```math
 X\in\mathbb{R}^{N\times D}
-$$
+```
 
-$$
+```math
 W\in\mathbb{R}^{D\times M}
-$$
+```
 
-$$
+```math
 Y\in\mathbb{R}^{N\times M}
-$$
+```
 
 假设上游梯度为：
 
-$$
+```math
 G=\frac{\partial L}{\partial Y}
-$$
+```
 
 则：
 
-$$
+```math
 \boxed{
 \frac{\partial L}{\partial X}
 =
 GW^T
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \frac{\partial L}{\partial W}
 =
 X^TG
 }
-$$
+```
 
 ### 输入梯度的维度检查
 
-$$
+```math
 GW^T:
 (N\times M)(M\times D)
 =
 N\times D
-$$
+```
 
 所以：
 
-$$
+```math
 \frac{\partial L}{\partial X}
-$$
+```
 
 与 $X$ 的形状相同。
 
 ### 权重梯度的维度检查
 
-$$
+```math
 X^TG:
 (D\times N)(N\times M)
 =
 D\times M
-$$
+```
 
 所以：
 
-$$
+```math
 \frac{\partial L}{\partial W}
-$$
+```
 
 与 $W$ 的形状相同。
 
 重要规律：
 
-$$
+```math
 \boxed{
 \text{一个变量的梯度必须与该变量的形状相同}
 }
-$$
+```
 
 <a id="section-17"></a>
 
@@ -1220,33 +1220,33 @@ $$
 
 前向传播：
 
-$$
+```math
 Z_1=XW_1
-$$
+```
 
-$$
+```math
 H=\mathrm{ReLU}(Z_1)
-$$
+```
 
-$$
+```math
 Y_{\text{pred}}=HW_2
-$$
+```
 
 假设使用平方损失：
 
-$$
+```math
 L=\sum(Y_{\text{pred}}-Y)^2
-$$
+```
 
 反向传播从右向左进行。
 
 ### 第一步：损失对预测结果求导
 
-$$
+```math
 \frac{\partial L}{\partial Y_{\text{pred}}}
 =
 2(Y_{\text{pred}}-Y)
-$$
+```
 
 代码：
 
@@ -1258,18 +1258,18 @@ grad_y_pred = 2.0 * (y_pred - y)
 
 由于：
 
-$$
+```math
 Y_{\text{pred}}=HW_2
-$$
+```
 
 所以：
 
-$$
+```math
 \frac{\partial L}{\partial W_2}
 =
 H^T
 \frac{\partial L}{\partial Y_{\text{pred}}}
-$$
+```
 
 代码：
 
@@ -1279,11 +1279,11 @@ grad_w2 = h.T.dot(grad_y_pred)
 
 ### 第三步：把梯度传回隐藏层
 
-$$
+```math
 \frac{\partial L}{\partial H}
 =
 \frac{\partial L}{\partial Y_{\text{pred}}}W_2^T
-$$
+```
 
 代码：
 
@@ -1293,19 +1293,19 @@ grad_h = grad_y_pred.dot(w2.T)
 
 ### 第四步：经过 ReLU 节点
 
-$$
+```math
 H=\mathrm{ReLU}(Z_1)
-$$
+```
 
 所以：
 
-$$
+```math
 \frac{\partial L}{\partial Z_1}
 =
 \frac{\partial L}{\partial H}
 \odot
 \mathbf{1}_{Z_1>0}
-$$
+```
 
 其中 $\odot$ 表示逐元素相乘。
 
@@ -1320,18 +1320,18 @@ grad_z1[z1 < 0] = 0
 
 由于：
 
-$$
+```math
 Z_1=XW_1
-$$
+```
 
 所以：
 
-$$
+```math
 \frac{\partial L}{\partial W_1}
 =
 X^T
 \frac{\partial L}{\partial Z_1}
-$$
+```
 
 代码：
 
@@ -1393,7 +1393,7 @@ for t in range(500):
 
 训练过程可以理解为：
 
-$$
+```math
 \boxed{
 \text{先预测}
 \rightarrow
@@ -1403,7 +1403,7 @@ $$
 \rightarrow
 \text{修改参数}
 }
-$$
+```
 
 </details>
 
@@ -1415,17 +1415,17 @@ $$
 
 如果显式构造：
 
-$$
+```math
 \frac{\partial Y}{\partial X}
-$$
+```
 
 雅可比矩阵会非常巨大，占用大量内存。
 
 反向传播真正需要的通常不是完整雅可比矩阵，而是：
 
-$$
+```math
 J^Tg
-$$
+```
 
 即雅可比矩阵与上游梯度的乘积。
 
@@ -1441,23 +1441,23 @@ $$
 
 对于输入图像：
 
-$$
+```math
 3\times32\times32
-$$
+```
 
 假设使用 6 个滤波器，每个滤波器大小为：
 
-$$
+```math
 3\times5\times5
-$$
+```
 
 这 6 个滤波器的尺寸相同，但内部的权重数值不同。
 
 每个滤波器包含：
 
-$$
+```math
 3\times5\times5=75
-$$
+```
 
 个权重。
 
@@ -1472,11 +1472,11 @@ $$
 
 因此：
 
-$$
+```math
 \boxed{
 \text{滤波器尺寸相同，但权重不同，所以提取的特征不同}
 }
-$$
+```
 
 <a id="section-21"></a>
 
@@ -1484,27 +1484,27 @@ $$
 
 滤波器在图像上截取一个局部区域：
 
-$$
+```math
 X_{\text{local}}
 \in
 \mathbb{R}^{3\times5\times5}
-$$
+```
 
 滤波器为：
 
-$$
+```math
 K\in\mathbb{R}^{3\times5\times5}
-$$
+```
 
 在一个位置上的输出为：
 
-$$
+```math
 z=
 \sum_{c=1}^{3}
 \sum_{i=1}^{5}
 \sum_{j=1}^{5}
 K_{cij}X_{cij}+b
-$$
+```
 
 也就是：
 
@@ -1514,23 +1514,23 @@ $$
 
 因此：
 
-$$
+```math
 \boxed{
 1\text{个滤波器}
 \rightarrow
 1\text{张特征图}
 }
-$$
+```
 
 6 个滤波器会生成 6 张特征图，所以输出通道数为 6：
 
-$$
+```math
 6\times28\times28
-$$
+```
 
 因此：
 
-$$
+```math
 \boxed{
 \text{滤波器数量}
 =
@@ -1538,7 +1538,7 @@ $$
 =
 \text{输出通道数}
 }
-$$
+```
 
 <a id="section-22"></a>
 
@@ -1550,9 +1550,9 @@ $$
 
 例如：
 
-$$
+```math
 1000\rightarrow200\rightarrow50\rightarrow10
-$$
+```
 
 是完全合法的网络结构。
 
@@ -1566,9 +1566,9 @@ $$
 
 真正的输入数据可能是：
 
-$$
+```math
 X\in\mathbb{R}^{64\times1000}
-$$
+```
 
 即 64 个样本，每个样本有 1000 个数。
 
@@ -1576,11 +1576,11 @@ $$
 
 当同一个变量通过多条路径影响损失时，各路径传回的梯度需要相加：
 
-$$
+```math
 \boxed{
 \text{同一变量，多条路径，梯度求和}
 }
-$$
+```
 
 ### 4. 为什么矩阵反向传播中经常出现转置
 
@@ -1588,17 +1588,17 @@ $$
 
 例如：
 
-$$
+```math
 Y=XW
-$$
+```
 
 传回 $X$ 的梯度为：
 
-$$
+```math
 \frac{\partial L}{\partial X}
 =
 \frac{\partial L}{\partial Y}W^T
-$$
+```
 
 这里使用 $W^T$，可以保证结果的形状与 $X$ 相同。
 
@@ -1606,7 +1606,7 @@ $$
 
 逐元素相乘：
 
-$$
+```math
 a\odot b
 =
 \begin{bmatrix}
@@ -1614,29 +1614,29 @@ a_1b_1\\
 a_2b_2\\
 \vdots
 \end{bmatrix}
-$$
+```
 
 结果仍然是向量。
 
 内积：
 
-$$
+```math
 a^Tb
 =
 a_1b_1+a_2b_2+\cdots
-$$
+```
 
 结果是一个标量。
 
 因此：
 
-$$
+```math
 \boxed{
 \text{内积}
 =
 \text{逐元素相乘后再求和}
 }
-$$
+```
 
 <a id="section-23"></a>
 
@@ -1644,35 +1644,35 @@ $$
 
 ### 1. 神经网络的基本结构
 
-$$
+```math
 \boxed{
 \text{线性变换}
 +
 \text{非线性激活}
 }
-$$
+```
 
 激活函数使多层网络不再等价于一个线性模型。
 
 ### 2. 一个神经元的计算
 
-$$
+```math
 z=w^Tx+b
-$$
+```
 
 即：
 
-$$
+```math
 \boxed{
 \text{权重与输入做内积，再加偏置}
 }
-$$
+```
 
 ### 3. 前向传播
 
 从输入开始，逐层计算：
 
-$$
+```math
 X
 \rightarrow
 Z_1
@@ -1682,13 +1682,13 @@ H
 Y_{\text{pred}}
 \rightarrow
 L
-$$
+```
 
 ### 4. 反向传播
 
 从损失开始，利用链式法则反向计算梯度：
 
-$$
+```math
 \boxed{
 \text{传回梯度}
 =
@@ -1696,7 +1696,7 @@ $$
 \times
 \text{局部梯度}
 }
-$$
+```
 
 ### 5. 常见节点规律
 
@@ -1711,39 +1711,39 @@ $$
 
 对于：
 
-$$
+```math
 Y=XW
-$$
+```
 
 有：
 
-$$
+```math
 \boxed{
 \frac{\partial L}{\partial X}
 =
 \frac{\partial L}{\partial Y}W^T
 }
-$$
+```
 
-$$
+```math
 \boxed{
 \frac{\partial L}{\partial W}
 =
 X^T\frac{\partial L}{\partial Y}
 }
-$$
+```
 
 ### 7. 梯度形状检查
 
-$$
+```math
 \frac{\partial L}{\partial X}
-$$
+```
 
 必须与 $X$ 的形状相同。
 
-$$
+```math
 \frac{\partial L}{\partial W}
-$$
+```
 
 必须与 $W$ 的形状相同。
 
