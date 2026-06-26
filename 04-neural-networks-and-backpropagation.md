@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="images/04-neural-networks-and-backpropagation-cover.png" alt="CS231n 2025 学习笔记（四）：神经网络与反向传播" width="100%">
-</p>
-
 <h1 align="center">CS231n 2025 学习笔记（四）：神经网络与反向传播</h1>
 
 <p align="center">
