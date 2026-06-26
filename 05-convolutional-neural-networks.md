@@ -1,8 +1,5 @@
 # CS231n 2025 学习笔记（五）：卷积神经网络与卷积层
 
-> 建议文件名：`05-convolutional-neural-networks.md`  
-> 关键词：CNN、Convolution、Filter、Stride、Padding、Pooling、Receptive Field
-
 ## 1. 为什么需要卷积神经网络？
 
 一张 CIFAR-10 彩色图像的形状为：
