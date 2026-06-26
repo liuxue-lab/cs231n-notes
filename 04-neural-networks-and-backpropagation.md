@@ -1751,13 +1751,4 @@ X^T\frac{\partial L}{\partial Y}
 
 > 前向传播负责计算预测结果，反向传播负责判断每个参数对最终误差承担了多大责任。
 
-## 仓库中的推荐文件结构
-
-```text
-CS231n-2025-Notes/
-├── 03-regularization-optimization-gradient-descent.md
-├── 04-neural-networks-and-backpropagation.md
-└── README.md
-```
-
 > 本笔记不依赖外部图片，单独上传 Markdown 文件即可正常阅读。
