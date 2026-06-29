@@ -1,8 +1,4 @@
 # CS231n 2025 学习笔记（六）：训练 CNN 与经典 CNN 架构
-
-> 对应课程：Stanford CS231n Spring 2025 Lecture 6 — **Training CNNs and CNN Architectures**。
->
-> 本文同时保留了课程 PPT 中的关键图示，并加入了重新绘制的中文概念图。所有图片均使用仓库内相对路径，可直接在 GitHub 中显示。
 >
 > 这一讲主要回答两个问题：
 >
